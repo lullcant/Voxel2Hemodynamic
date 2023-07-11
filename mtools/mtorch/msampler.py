@@ -1,6 +1,4 @@
-'''
-YyzHarry/imbalanced-semi-self
-'''
+
 
 import random
 import numpy as np

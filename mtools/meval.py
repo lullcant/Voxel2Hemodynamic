@@ -1,26 +1,3 @@
-#!/usr/bin/python3
-# -*- coding:utf-8 -*-
-
-###################################################################
-## Author: MiaoMiaoYang
-## Created: 20.03.20
-## Last Changed: 20.03.20
-###################################################################
-
-###################################################################
-## 医学图像评价方法
-## Cite:
-## @article{taha2015metrics,
-##   title={Metrics for evaluating 3D medical image segmentation: analysis, selection, and tool},
-##   author={Taha, Abdel Aziz and Hanbury, Allan},
-##   journal={BMC medical imaging},
-##   volume={15},
-##   number={1},
-##   pages={29},
-##   year={2015},
-##   publisher={BioMed Central}
-## }
-###################################################################
 
 import math
 import numpy as np

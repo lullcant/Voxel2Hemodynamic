@@ -1,13 +1,4 @@
-#!/usr/bin/python3
-# -*- coding:utf-8 -*-
 
-###################################################################
-## File: mpretreat.py
-## Author: MiaoMiaoYang
-## Created: 20.08.22
-## Last Changed: 20.08.22
-## Description: model train utils
-###################################################################
 
 def get_selected_crops_using_nms(ratios, centers, box_shape, iou_threshold):
     '''
