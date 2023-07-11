@@ -1,0 +1,79 @@
+
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{tikz/tikzlayers}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+\begin{document}
+\begin{tikzpicture}
+\node[canvas is zy plane at x=0] (input) at (0, 0, 0){\includegraphics[width=1.6cm,height=1.6cm]{tikz/add-image/miao.png}};
+
+\pic[shift={(1, 0, 0)}] at (input)
+    {RightBandedBox={
+        name=conv1x1,
+        width={4},
+        height=8,
+        depth=8,
+        fill={rgb:yellow,5;red,2.5;white,5},
+        bandfill={rgb:yellow,5;red,5;white,5},
+    }
+};
+
+\pic[shift={(1, 0, 0)}] at (conv1x1)
+    {Box={
+        name=l1-unpool,
+        width={1},
+        height=16,
+        depth=16,
+        fill={rgb:blue,2;green,1;black,0.3},
+        opacity={0.5},
+    }
+};
+
+\pic[shift={(0, 0, 0)}] at (l1-unpool)
+    {RightBandedBox={
+        name=l1-conv,
+        width={2, 2, 4},
+        height=16,
+        depth=16,
+        fill={rgb:yellow,5;red,2.5;white,5},
+        bandfill={rgb:yellow,5;red,5;white,5},
+        xlabel={{4, 4, 8}},
+        zlabel=1024,
+    }
+};
+
+\pic[shift={(1, 0, 0)}] at (l1-conv)
+    {Box={
+        name=l2-unpool,
+        width={1},
+        height=16,
+        depth=16,
+        fill={rgb:blue,2;green,1;black,0.3},
+        opacity={0.5},
+    }
+};
+
+\pic[shift={(0, 0, 0)}] at (l2-unpool)
+    {RightBandedBox={
+        name=l2-conv,
+        width={2, 2, 4},
+        height=25,
+        depth=25,
+        fill={rgb:yellow,5;red,2.5;white,5},
+        bandfill={rgb:yellow,5;red,5;white,5},
+        xlabel={{4, 4, 8}},
+        zlabel=2048,
+    }
+};
+
+\path (l1-conv-southeast) -- (l1-conv-northeast) coordinate[pos=1.5] (l1-conv-top);
+\path (l2-unpool-south) -- (l2-unpool-northeast) coordinate[pos=1.5] (l2-unpool-top);
+\draw[line width=2,, every node/.style={sloped, allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7] (l1-conv-northeast)
+-- node { \tikz \draw[-Stealth,line width=2,draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7] (-0.3,0) -- ++(0.3,0);}(l1-conv-top)
+-- node { \tikz \draw[-Stealth,line width=2,draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7] (-0.3,0) -- ++(0.3,0);}(l2-unpool-top)
+-- node { \tikz \draw[-Stealth,line width=2,draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7] (-0.3,0) -- ++(0.3,0);}(l2-unpool-north);
+
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,14 @@
+localhost: &localhost1
+    host: 127.0.0.1
+
+user:
+    <<: *localhost1
+    db: 8
+
+book:
+    <<: *localhost1
+    db: 9
+
+comment:
+    <<: *localhost1
+    db: 10

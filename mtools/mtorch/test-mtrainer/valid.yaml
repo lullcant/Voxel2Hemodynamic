@@ -1,0 +1,49 @@
+tag: LT-classifier
+
+dataset:
+  defin_path: ./dataset.py
+  defin_parm: {dataset: cifar10}
+  batch_size: 128
+  num_worker: 0
+  isdroplast: true
+  is_shuffle: true
+  defin_sampler: null
+  param_sampler: {}
+
+network:
+  use_cuda: true
+  use_parallel: false
+  modules:
+    extractors:
+      defin_path: ./mtools/mtorch/models/resnet/resnet10_cifar.py
+      defin_parm: {use_fc: false, dropout: null}
+      curr_params: null
+    classifier:
+      defin_path: ./mtools/mtorch/models/DotProductClassifier.py
+      defin_parm: {feat_dim: 512, num_classes: 10}
+      curr_params: null
+
+
+criterions:
+  focalloss:
+    defin_path: ./mtools/mtorch/loss/FocalLoss.py
+    defin_parm: {weight: null, gamma: 2, mean: average}
+    weight: 1
+
+
+train:
+  current_epoch: 1
+  total_epoches: 5000
+  threshold_grad: 1e5
+
+valid:
+  step: 1
+
+saver:
+  dire_checkpoint: ./checkpoints
+
+monitor:
+  logger: true
+  stdstream: true
+  tensorboardx: true
+

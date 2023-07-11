@@ -1,0 +1,165 @@
+# This is an example of a parameters file
+# It is written according to the YAML-convention (www.yaml.org) and is checked by the code for consistency.
+# Three types of parameters are possible and reflected in the structure of the document:
+#
+# Parameter category:
+#   Setting Name: <value>
+#
+# The three parameter categories are:
+# - setting: Setting to use for preprocessing and class specific settings. if no <value> is specified, the value for
+#   this setting is set to None.
+# - featureClass: Feature class to enable, <value> is list of strings representing enabled features. If no <value> is
+#   specified or <value> is an empty list ('[]'), all features for this class are enabled.
+# - imageType: image types to calculate features on. <value> is custom kwarg settings (dictionary). if <value> is an
+#   empty dictionary ('{}'), no custom settings are added for this input image.
+#
+# Some parameters have a limited list of possible values. Where this is the case, possible values are listed in the
+# package documentation
+
+# Settings to use, possible settings are listed in the documentation (section "Customizing the extraction").
+setting:
+  binWidth: 25
+  label: 1
+  interpolator: 'sitkBSpline' # This is an enumerated value, here None is not allowed
+  resampledPixelSpacing: # This disables resampling, as it is interpreted as None, to enable it, specify spacing in x, y, z as [x, y , z]
+  weightingNorm: # If no value is specified, it is interpreted as None
+
+# Image types to use: "Original" for unfiltered image, for possible filters, see documentation.
+imageType:
+  Original: {} # for dictionaries / mappings, None values are not allowed, '{}' is interpreted as an empty dictionary
+
+# Featureclasses, from which features must be calculated. If a featureclass is not mentioned, no features are calculated
+# for that class. Otherwise, the specified features are calculated, or, if none are specified, all are calculated (excluding redundant/deprecated features).
+featureClass:
+  # redundant Compactness 1, Compactness 2 an Spherical Disproportion features are disabled by default, they can be
+  # enabled by specifying individual feature names (as is done for glcm) and including them in the list.
+  shape:
+    ## Shape 3D
+    - 'MeshVolume'                  ## 1.
+    - 'VoxelVolume'                 ## 2.
+    - 'SurfaceArea'                 ## 3.
+    - 'SurfaceVolumeRatio'          ## 4.
+    - 'Sphericity'                  ## 5.
+    # - 'Compactness1'                ## 6. (disabled by default)
+    # - 'Compactness2'                ## 7. (disabled by default)
+    # - 'SphericalDisproportion'      ## 8. (disabled by default)
+    - 'Maximum3DDiameter'           ## 9.
+    - 'Maximum2DDiameterSlice'      ## 10.
+    - 'Maximum2DDiameterColumn'     ## 11.
+    - 'Maximum2DDiameterRow'        ## 12.
+    - 'MajorAxisLength'             ## 13.
+    - 'MinorAxisLength'             ## 14.
+    - 'LeastAxisLength'             ## 15.
+    - 'Elongation'                  ## 16.
+    - 'Flatness'                    ## 17.
+    ## Shape 2D
+    # - 'MeshSurface'                 ## 1.
+    # - 'PixelSurface'                ## 2.
+    # - 'Perimeter'                   ## 3.
+    # - 'PerimeterSurfaceRatio'       ## 4.
+    # - 'Sphericity'                  ## 5.
+    # - 'SphericalDisproportion'      ## 6.
+    # - 'MaximumDiameter'             ## 7.
+    # - 'MajorAxisLength'             ## 8.
+    # - 'MinorAxisLength'             ## 9.
+    # - 'Elongation'                  ## 10.
+  firstorder: 
+    - 'Energy'                      ## 1. 
+    - 'TotalEnergy'                 ## 2. 
+    - 'Entropy'                     ## 3.
+    - 'Minimum'                     ## 4.
+    - '10Percentile'                ## 5.
+    - '90Percentile'                ## 6.
+    - 'Maximum'                     ## 7.
+    - 'Mean'                        ## 8.
+    - 'Median'                      ## 9.
+    - 'InterquartileRange'          ## 10.
+    - 'Range'                       ## 11.
+    - 'MeanAbsoluteDeviation'       ## 12.
+    - 'RobustMeanAbsoluteDeviation' ## 13.
+    - 'RootMeanSquared'             ## 14.
+    # - 'StandardDeviation'           ## 15.
+    - 'Skewness'                    ## 16.
+    - 'Kurtosis'                    ## 17.
+    - 'Variance'                    ## 18.
+    - 'Uniformity'                  ## 19.
+  glcm:
+    - 'Autocorrelation'             ## 1.
+    - 'JointAverage'                ## 2.
+    - 'ClusterProminence'           ## 3.
+    - 'ClusterShade'                ## 4.
+    - 'ClusterTendency'             ## 5.
+    - 'Contrast'                    ## 6.
+    - 'Correlation'                 ## 7.
+    - 'DifferenceAverage'           ## 8.
+    - 'DifferenceEntropy'           ## 9.
+    - 'DifferenceVariance'          ## 10.
+    - 'JointEnergy'                 ## 11.
+    - 'JointEntropy'                ## 12.
+    - 'Imc1'                        ## 13.
+    - 'Imc2'                        ## 14.
+    - 'Idm'                         ## 15.
+    - 'MCC'                         ## 16.
+    - 'Idmn'                        ## 17.
+    - 'Id'                          ## 18.
+    - 'Idn'                         ## 19.
+    - 'InverseVariance'             ## 20.
+    - 'MaximumProbability'          ## 21.
+    # - 'SumAverage'                  ## 22.
+    - 'SumEntropy'                  ## 23.
+    - 'SumSquares'                  ## 24.
+  glrlm:
+    - 'ShortRunEmphasis'                 ## 1.
+    - 'LongRunEmphasis'                  ## 2.
+    - 'GrayLevelNonUniformity'           ## 3.
+    - 'GrayLevelNonUniformityNormalized' ## 4.
+    - 'RunLengthNonUniformity'           ## 5.
+    - 'RunLengthNonUniformityNormalized' ## 6.
+    - 'RunPercentage'                    ## 7.
+    - 'GrayLevelVariance'                ## 8.
+    - 'RunVariance'                      ## 9.
+    - 'RunEntropy'                       ## 10.
+    - 'LowGrayLevelRunEmphasis'          ## 11.
+    - 'HighGrayLevelRunEmphasis'         ## 12.
+    - 'ShortRunLowGrayLevelEmphasis'     ## 13.
+    - 'ShortRunHighGrayLevelEmphasis'    ## 14.
+    - 'LongRunLowGrayLevelEmphasis'      ## 15.
+    - 'LongRunHighGrayLevelEmphasis'     ## 16.
+  ngtdm:
+    - 'Coarseness'
+    - 'Contrast'
+    - 'Busyness'
+    - 'Complexity'
+    - 'Strength'
+  glszm:
+    - 'SmallAreaEmphasis'                      ## 1.
+    - 'LargeAreaEmphasis'                      ## 2.
+    - 'GrayLevelNonUniformity'                 ## 3.
+    - 'GrayLevelNonUniformityNormalized'       ## 4.
+    - 'SizeZoneNonUniformity'                  ## 5.
+    - 'SizeZoneNonUniformityNormalized'        ## 6.
+    - 'ZonePercentage'                         ## 7.
+    - 'GrayLevelVariance'                      ## 8.
+    - 'ZoneVariance'                           ## 9.
+    - 'ZoneEntropy'                            ## 10.
+    - 'LowGrayLevelZoneEmphasis'               ## 11.
+    - 'HighGrayLevelZoneEmphasis'              ## 12.
+    - 'SmallAreaLowGrayLevelEmphasis'          ## 13. 
+    - 'SmallAreaHighGrayLevelEmphasis'         ## 14.
+    - 'LargeAreaLowGrayLevelEmphasis'          ## 15.
+    - 'LargeAreaHighGrayLevelEmphasis'         ## 16.
+  gldm:
+    - 'SmallDependenceEmphasis'                ## 1.
+    - 'LargeDependenceEmphasis'                ## 2.
+    - 'GrayLevelNonUniformity'                 ## 3.
+    - 'DependenceNonUniformity'                ## 4.
+    - 'DependenceNonUniformityNormalized'      ## 5.
+    - 'GrayLevelVariance'                      ## 6.
+    - 'DependenceVariance'                     ## 7.
+    - 'DependenceEntropy'                      ## 8.
+    - 'LowGrayLevelEmphasis'                   ## 9.
+    - 'HighGrayLevelEmphasis'                  ## 10.
+    - 'SmallDependenceLowGrayLevelEmphasis'    ## 11.
+    - 'SmallDependenceHighGrayLevelEmphasis'   ## 12.
+    - 'LargeDependenceLowGrayLevelEmphasis'    ## 13. 
+    - 'LargeDependenceHighGrayLevelEmphasis'   ## 14.
