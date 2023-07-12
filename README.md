@@ -17,6 +17,8 @@ Voxel2Hemodynamic
     ├── Tag-VesselMeshSegmentation-GCN-best-checkpoint.pth(weight for segmentation and vectorization)
     ├── model_best.pth(weight for Hemodynamic Prediction)
 ├── data
+    ├── mcrops
+    ├── test_data
 ├── data_utils
 ├── README.md
 ├── models
