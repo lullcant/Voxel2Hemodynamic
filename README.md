@@ -9,11 +9,17 @@ will be updated soon.
 ```
 Voxel2Hemodynamic
 ├── checkpoints
+    ├── Tag-VesselMeshSegmentation-GCN-best-checkpoint.pth(weight for segmentation and vectorization)
+    ├── model_best.pth(weight for Hemodynamic Prediction)
 ├── data
 ├── data_utils
 ├── README.md
 ├── models
-├── DDP_tesh.sh
+    ├── pointnet2_sem_seg.py(pointnet++)
+├── DDP_test.sh
 ├── config-predict.yaml
 └── mtools
 ```
+# Visualization 
+After the prediction, the visualization result of the prediction can be get using the software Paraview
+the link for download this software is: https://www.paraview.org/
