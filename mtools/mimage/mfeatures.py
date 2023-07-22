@@ -1,29 +1,4 @@
-#!/usr/bin/python3
-# -*- coding:utf-8 -*-
 
-###################################################################
-## Author: Jiuze Yu, Xin Tang, MiaoMiaoYang
-## Created: 19.09.04
-## Last Changed: 19.09.04
-## Based on pyradiomics
-## @article {
-##   van Griethuysene104,
-##   author = {van Griethuysen, Joost J.M. and Fedorov, Andriy and Parmar, Chintan and Hosny, Ahmed and Aucoin,
-##             Nicole and Narayan, Vivek and Beets-Tan, Regina G.H. and Fillion-Robin, Jean-Christophe and Pieper,
-##             Steve and Aerts, Hugo J.W.L.},
-##   title = {Computational Radiomics System to Decode the Radiographic Phenotype},
-##   volume = {77},
-##   number = {21},
-##   pages = {e104--e107},
-##   year = {2017},
-##   doi = {10.1158/0008-5472.CAN-17-0339},
-##   publisher = {American Association for Cancer Research},
-##   issn = {0008-5472},
-##   URL = {https://cancerres.aacrjournals.org/content/77/21/e104},
-##   eprint = {https://cancerres.aacrjournals.org/content/77/21/e104.full.pdf},
-##   journal = {Cancer Research}
-##  }
-###################################################################
 
 import SimpleITK as sitk
 import radiomics.featureextractor as FEE
