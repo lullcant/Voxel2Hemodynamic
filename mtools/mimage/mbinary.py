@@ -1,12 +1,4 @@
-#!/usr/bin/python3
-# -*- coding:utf-8 -*-
 
-###################################################################
-## File: mpretreat.py
-## Author: MiaoMiaoYang
-## Created: 20.08.22
-## Last Changed: 20.10.07
-###################################################################
 
 import numpy as np
 import SimpleITK as sitk
