@@ -25,7 +25,7 @@ Voxel2Hemodynamic
     ├── pointnet2_sem_seg.py(pointnet++)
 ├── DDP_test.sh
 ├── config-predict.yaml
-└── mtools
+└── mtools(code from another paper, you don't need to see or modify it)
 ```
 # Visualization 
 After the prediction, the visualization result of the prediction can be get using the software Paraview
