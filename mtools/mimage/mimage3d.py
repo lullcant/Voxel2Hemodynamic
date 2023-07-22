@@ -112,7 +112,7 @@ def get_3d_rotate(image, angle, plane='z', mode="nearest"):
 
 def test_get_3d_interpolation():
     from mtools.mio import get_medical_image, save_medical_image
-    img, o, s, d, _ = get_medical_image("../../data/Changhai/image/cao xue e.nrrd")
+    img, o, s, d, _ = get_medical_image("../../data/")
     print(img.shape)
     s = (s[0], s[1], s[2] / (84.5 / 80))
 
@@ -123,15 +123,15 @@ def test_get_3d_interpolation():
 
 def test_get_3d_rotate():
     from mtools.mio import get_medical_image, save_medical_image
-    img, o, s, d, _ = get_medical_image("../../data/Changhai/image/bai yu zhen.nrrd")
-    org, _, _, _, _ = get_medical_image("../../data/Changhai/organ/bai yu zhen.nrrd")
+    img, o, s, d, _ = get_medical_image("../../data/")
+    org, _, _, _, _ = get_medical_image("../../data/")
 
     img = get_3d_rotate(image=img, angle=45, plane='x')
     org = get_3d_rotate(image=org, angle=45, plane='x')
     org = np.asarray(org > 0.1).astype(np.int)
 
-    save_medical_image(img, "../../bai-img.nrrd", o, s, d)
-    save_medical_image(org, "../../bai-org.nrrd", o, s, d)
+    save_medical_image(img, "../../img.nrrd", o, s, d)
+    save_medical_image(org, "../../org.nrrd", o, s, d)
 
 
 if __name__ == "__main__":
