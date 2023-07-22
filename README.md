@@ -3,8 +3,8 @@
 This is the repo of the paper Voxel2Hemodynamics: An End-to-end Deep Learning Method for Predicting Coronary Artery Hemodynamics.
 # Content 
 This repo contains an end to end framework to get the hemodynamics prediction of coronary artery given a dcm image. First we
-generate pointcloud data from dcm and then use pointnet++ to predict the hemodynamics. The evaluation code is provided, and the training code
-will be updated soon.
+generate pointcloud data from dcm and then use pointnet++ to predict the hemodynamics. Here are only part of the code for the 
+paper and this repo is still being updated.
 # Setup
 ```
 cd Voxel2Hemodynamics
@@ -25,7 +25,7 @@ Voxel2Hemodynamic
     ├── pointnet2_sem_seg.py(pointnet++)
 ├── DDP_test.sh
 ├── config-predict.yaml
-└── mtools(code from another paper, you don't need to see or modify it)
+└── mtools(the code from this directory is not created by us but created by authors of another paper, you don't need to see or modify it)
 ```
 # Visualization 
 After the prediction, the visualization result of the prediction can be get using the software Paraview
