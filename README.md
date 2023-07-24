@@ -15,10 +15,7 @@ pip install -r requirement.txt
 ```
 Voxel2Hemodynamic
 ├── checkpoints (please download the weight and create this directory yourself)
-    ├── Tag-VesselMeshSegmentation-GCN-best-checkpoint.pth(weight for segmentation and vectorization)
-    ├── model_best.pth(weight for Hemodynamic Prediction)
 ├── data
-    ├── mcrops
     ├── test_data
 ├── data_utils
 ├── README.md
