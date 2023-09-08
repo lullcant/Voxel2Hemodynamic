@@ -1,6 +1,6 @@
 # Voxel2Hemodynamics
 # Introduction
-This is the repo of the paper Voxel2Hemodynamics: An End-to-end Deep Learning Method for Predicting Coronary Artery Hemodynamics.
+This is the repo of the STACOM2023 paper Voxel2Hemodynamics: An End-to-end Deep Learning Method for Predicting Coronary Artery Hemodynamics.
 ![End to End Hemodynamic Prediction Framework](./fig1new.png)
 # Content 
 This repo contains an end to end framework to get the hemodynamics prediction of coronary artery given a dcm image. First we
